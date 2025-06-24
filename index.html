@@ -80,12 +80,13 @@
             width: 100%;
             height: 100%;
             border: none;
-            background: transparent;
-            color: white;
+            background: rgba(255, 255, 255, 0.05); /* було transparent */
+            color: #fff; /* замість rgba(..., 0.5) */
             font-size: 1.5rem;
             font-weight: bold;
             text-align: center;
             outline: none;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); /* додає читабельність */
         }
 
         .cell input::placeholder {
@@ -133,7 +134,7 @@
             padding: 15px;
             border: none;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
             color: white;
             font-size: 1.2rem;
             font-weight: bold;
@@ -282,7 +283,7 @@
         </div>
 
         <div class="keypad">
-            <button class="key" onclick="inputNumber(1)">1</button>
+            <!-- <button class="key" onclick="inputNumber(1)">1</button>
             <button class="key" onclick="inputNumber(2)">2</button>
             <button class="key" onclick="inputNumber(3)">3</button>
             <button class="key" onclick="inputNumber(4)">4</button>
@@ -291,7 +292,7 @@
             <button class="key" onclick="inputNumber(7)">7</button>
             <button class="key" onclick="inputNumber(8)">8</button>
             <button class="key" onclick="inputNumber(9)">9</button>
-            <button class="key" onclick="inputNumber(0)">0</button>
+            <button class="key" onclick="inputNumber(0)">0</button> -->
             <button class="key backspace" onclick="deleteLast()">⌫ Видалити</button>
             <button class="key enter" onclick="submitGuess()">✓ Перевірити</button>
         </div>
@@ -342,7 +343,8 @@
                     cell.id = `cell-${row}-${col}`;
                     
                     const input = document.createElement('input');
-                    input.type = 'text';
+                    input.type = 'tel';
+                    input.inputMode = 'numeric';
                     input.maxLength = '1';
                     input.pattern = '[0-9]';
                     input.addEventListener('input', handleInput);
